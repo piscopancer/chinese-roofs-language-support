@@ -1,0 +1,25 @@
+{
+  "name": "chinese-roofs-language-support",
+  "displayName": "Chinese Roofs Language Support",
+  "description": "Support for Chinese Roofs Language (.chr)",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.89.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "chr",
+      "aliases": ["Chinese Roofs", "chr"],
+      "extensions": [".chr"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "chr",
+      "scopeName": "source.chr",
+      "path": "./syntaxes/chr.tmLanguage.json"
+    }]
+  }
+}
