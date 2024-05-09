@@ -2,7 +2,7 @@
   "name": "chinese-roofs-language-support",
   "displayName": "Chinese Roofs Language Support",
   "description": "Support for Chinese Roofs Language (.chr)",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.89.0"
   },
