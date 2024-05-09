@@ -1,8 +1,10 @@
 # Change Log
 
-All notable changes to the "chinese-roofs-language-support" extension will be documented in this file.
+## [1.0.0] - 2024-05-09
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+### Added
+
+- Syntax rules.
 
 ## [Unreleased]
 
