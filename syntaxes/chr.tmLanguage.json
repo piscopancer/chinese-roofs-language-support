@@ -26,57 +26,93 @@
       }
     },
     "translation": {
-      "begin": "^==",
-      "end": "^==",
-      "name": "translation.chr",
-      "patterns": [
-        {
-          "begin": "(?<===)",
-          "end": "(?===)",
-          "name": "🍌"
-        }
-      ]
-    },
-    "word": {
-      "name": "word.chr",
-      "match": "^(.*?)(\\s*?\\[.*\\])?(\\s+.*)?$",
-      "captures": {
-        "1": {
-          "name": "original.chr"
-        },
-        "2": {
-          "name": "pinyin.chr",
-          "patterns": [
-            {
-              "match": "[a-zA-Z]+",
-              "captures": {
-                "0": {
-                  "name": "char.chr"
-                }
-              }
-            },
-            {
-              "match": "\\d+",
-              "captures": {
-                "0": {
-                  "name": "tone.chr"
-                }
-              }
-            }
-          ]
-        },
-        "3": {
-          "name": "translation.chr",
+      "begin": "^\\<",
+      "beginCaptures": {
+        "0": {
           "patterns": [
             {
               "include": "#punctuation"
-            },
-            {
-              "include": "#latin"
             }
           ]
         }
-      }
+      },
+      "end": "^\\>",
+      "endCaptures": {
+        "0": {
+          "patterns": [
+            {
+              "include": "#punctuation"
+            }
+          ]
+        }
+      },
+      "name": "translation.chr",
+      "patterns": [
+        {
+          "include": "#punctuation"
+        },
+        {
+          "begin": "(?<=\\<)",
+          "end": "(?=\\-)",
+          "name": "translation.text.chr",
+          "patterns": [
+            {
+              "include": "#punctuation"
+            }
+          ]
+        },
+        {
+          "begin": "(?<=\\-)",
+          "end": "(?=\\>)",
+          "name": "translation.vocabulary.chr",
+          "patterns": [
+            {
+              "name": "translation.vocabulary.word.chr",
+              "match": "^(.*?)(\\s*?\\[.*\\])?(\\s+.*)?$",
+              "captures": {
+                "1": {
+                  "name": "translation.vocabulary.word.original.chr"
+                },
+                "2": {
+                  "name": "translation.vocabulary.word.pinyin.chr",
+                  "patterns": [
+                    {
+                      "match": "[a-zA-Z]+",
+                      "captures": {
+                        "0": {
+                          "name": "translation.vocabulary.word.pinyin.char.chr"
+                        }
+                      }
+                    },
+                    {
+                      "match": "\\d+",
+                      "captures": {
+                        "0": {
+                          "name": "translation.vocabulary.word.pinyin.tone.chr"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "3": {
+                  "name": "translation.vocabulary.word.translation.chr",
+                  "patterns": [
+                    {
+                      "include": "#punctuation"
+                    },
+                    {
+                      "include": "#latin"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "include": "#punctuation"
+            }
+          ]
+        }
+      ]
     },
     "latin": {
       "name": "latin.chr",
@@ -87,7 +123,7 @@
     },
     "punctuation": {
       "name": "punctuation.chr",
-      "match": "(`|\\.|\\,|\\:|\\;|\\<|\\>|\\[|\\(|\\)|\\]|\\!|\\?|\\.\\.\\.|\"|\"|'|，|、|：|；|。|？|！|《|》|【|】|·|”|“)",
+      "match": "(\\.|\\,|\\:|\\;|\\<|\\>|\\[|\\(|\\)|\\]|\\!|\\?|\\.\\.\\.|\"|\"|-|`|'|，|、|：|；|。|？|！|《|》|【|】|·|”|“)",
       "captures": {
         "1": { "name": "punctuation" }
       }
