@@ -53,7 +53,7 @@
         },
         {
           "begin": "(?<=\\<)",
-          "end": "(?=\\-)",
+          "end": "(?=-$)",
           "name": "translation.text.chr",
           "patterns": [
             {
@@ -62,13 +62,13 @@
           ]
         },
         {
-          "begin": "(?<=\\-)",
+          "begin": "(?<=-$)",
           "end": "(?=\\>)",
           "name": "translation.vocabulary.chr",
           "patterns": [
             {
               "name": "translation.vocabulary.word.chr",
-              "match": "^(.*?)(\\s*?\\[.*\\])?(\\s+.*)?$",
+              "match": "^(.*?\\s+)(\\[.*\\])?(\\s+.*)?$",
               "captures": {
                 "1": {
                   "name": "translation.vocabulary.word.original.chr"
