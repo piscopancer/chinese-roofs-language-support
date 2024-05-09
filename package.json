@@ -10,16 +10,36 @@
     "Programming Languages"
   ],
   "contributes": {
-    "languages": [{
-      "id": "chr",
-      "aliases": ["Chinese Roofs", "chr"],
-      "extensions": [".chr"],
-      "configuration": "./language-configuration.json"
-    }],
-    "grammars": [{
-      "language": "chr",
-      "scopeName": "source.chr",
-      "path": "./syntaxes/chr.tmLanguage.json"
-    }]
+    "languages": [
+      {
+        "id": "chr",
+        "aliases": [
+          "Chinese Roofs",
+          "chr"
+        ],
+        "extensions": [
+          ".chr"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "chr",
+        "scopeName": "source.chr",
+        "path": "./syntaxes/chr.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "chr",
+        "path": "./snippets/chr.code-snippets"
+      }
+    ],
+    "configurationDefaults": {
+      "[chr]": {
+        "editor.bracketPairColorization.enabled": false
+      }
+    }
   }
 }

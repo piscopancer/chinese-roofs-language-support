@@ -10,9 +10,21 @@
     },
     {
       "include": "#punctuation"
+    },
+    {
+      "include": "#comment"
     }
   ],
   "repository": {
+    "comment": {
+      "name": "comment.chr",
+      "match": "^#.*$",
+      "captures": {
+        "0": {
+          "name": "comment"
+        }
+      }
+    },
     "translation": {
       "name": "translation.chr",
       "begin": "(^|\\G)\\s*(==)",
@@ -20,18 +32,52 @@
         "1": { "name": "punctuation" },
         "2": { "name": "punctuation" }
       },
-      "end": "(==)"
+      "end": "(==)",
+      "patterns": [{ "include": "#word" }]
+    },
+    "word": {
+      "name": "word.chr",
+      "match": "^(.*)\\s+\\[(\\.*)\\]\\s+(.*)$",
+      "captures": {
+        "1": {
+          "name": "original.chr"
+        },
+        "2": {
+          "name": "pinyin.chr",
+          "patterns": [
+            {
+              "match": "[a-zA-Z]+",
+              "captures": {
+                "0": {
+                  "name": "char.chr"
+                }
+              }
+            },
+            {
+              "match": "\\d+",
+              "captures": {
+                "0": {
+                  "name": "tone.chr"
+                }
+              }
+            }
+          ]
+        },
+        "3": {
+          "name": "translation.chr"
+        }
+      }
     },
     "latin": {
       "name": "latin.chr",
       "match": "(\\p{Latin})",
       "captures": {
-        "1": { "name": "punctuation" }
+        "1": { "name": "comment" }
       }
     },
     "punctuation": {
       "name": "punctuation.chr",
-      "match": "(，|、|：|；|。|？|！|《|》|【|】|·|”|“|\"|\"|'|\\[|\\])",
+      "match": "(`|\\.|\\,|\\:|\\;|\\<|\\>|\\[|\\(|\\)|\\]|\\!|\\?|\\.\\.\\.|\"|\"|'|，|、|：|；|。|？|！|《|》|【|】|·|”|“)",
       "captures": {
         "1": { "name": "punctuation" }
       }
