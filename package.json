@@ -1,7 +1,17 @@
 {
   "name": "chinese-roofs-language-support",
+  "author": {
+    "name": "piscopancer",
+    "url": "https://github.com/piscopancer",
+    "email": "igor.bistr01092003@gmail.com"
+  },
+  "icon": "./images/logo.png",
   "displayName": "Chinese Roofs Language Support",
   "description": "Support for Chinese Roofs Language (.chr)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/piscopancer/chinese-roofs-language-support.git"
+  },
   "version": "1.0.0",
   "engines": {
     "vscode": "^1.89.0"
