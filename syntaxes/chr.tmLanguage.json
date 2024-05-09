@@ -26,18 +26,20 @@
       }
     },
     "translation": {
+      "begin": "^==",
+      "end": "^==",
       "name": "translation.chr",
-      "begin": "(^|\\G)\\s*(==)",
-      "captures": {
-        "1": { "name": "punctuation" },
-        "2": { "name": "punctuation" }
-      },
-      "end": "(==)",
-      "patterns": [{ "include": "#word" }]
+      "patterns": [
+        {
+          "begin": "(?<===)",
+          "end": "(?===)",
+          "name": "🍌"
+        }
+      ]
     },
     "word": {
       "name": "word.chr",
-      "match": "^(.*)\\s+\\[(\\.*)\\]\\s+(.*)$",
+      "match": "^(.*?)(\\s*?\\[.*\\])?(\\s+.*)?$",
       "captures": {
         "1": {
           "name": "original.chr"
@@ -64,7 +66,15 @@
           ]
         },
         "3": {
-          "name": "translation.chr"
+          "name": "translation.chr",
+          "patterns": [
+            {
+              "include": "#punctuation"
+            },
+            {
+              "include": "#latin"
+            }
+          ]
         }
       }
     },
